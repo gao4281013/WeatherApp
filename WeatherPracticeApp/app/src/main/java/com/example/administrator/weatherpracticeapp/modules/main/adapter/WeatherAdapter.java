@@ -4,7 +4,9 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import com.example.administrator.weatherpracticeapp.base.BaseViewHolder;
 import com.example.administrator.weatherpracticeapp.component.AnimRecycleViewAdapter;
+import com.example.administrator.weatherpracticeapp.modules.main.domain.Weather;
 
 /**
  * Created by Administrator on 2017/11/20.
@@ -20,6 +22,12 @@ public class WeatherAdapter  extends AnimRecycleViewAdapter<RecyclerView.ViewHol
   private static final int TYPE_TWO = 1;
   private static final int TYPE_THREE = 2;
   private static final int TYPE_FOUR = 3;
+
+  private Weather mWeather;
+
+  public WeatherAdapter(Weather weather) {
+    mWeather = weather;
+  }
 
   @Override
   public int getItemViewType(int position) {
@@ -53,5 +61,20 @@ public class WeatherAdapter  extends AnimRecycleViewAdapter<RecyclerView.ViewHol
   @Override
   public void showItemAnim(View view, int position) {
     super.showItemAnim(view, position);
+  }
+
+
+  /**
+   * 当前天气情况
+   * */
+  class NowWeatherViewHolder extends BaseViewHolder<Weather>{
+    public NowWeatherViewHolder(View itemView) {
+      super(itemView);
+    }
+
+    @Override
+    protected void bind(Weather weather) {
+
+    }
   }
 }

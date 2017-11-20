@@ -8,4 +8,8 @@
 
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="cloth_rate">穿衣指数---</string>
+  <string name="sport_rate">运动指数---</string>
+  <string name="travel_rate">旅游指数---</string>
+  <string name="faver_rate">感冒指数---</string>
 </resources>
