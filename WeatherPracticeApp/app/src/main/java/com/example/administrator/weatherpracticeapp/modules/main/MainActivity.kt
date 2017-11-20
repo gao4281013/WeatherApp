@@ -1,4 +1,4 @@
-package com.example.administrator.weatherpracticeapp
+package com.example.administrator.weatherpracticeapp.modules.main
 
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -8,8 +8,12 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import com.example.administrator.weatherpracticeapp.R
+import com.example.administrator.weatherpracticeapp.event.SplashEvent
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.part_tab_layout.*
+import org.greenrobot.eventbus.EventBus
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -17,14 +21,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
     setSupportActionBar(toolbar)
-
+    EventBus.getDefault().post(SplashEvent())
     fab.setOnClickListener { view ->
       Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
           .setAction("Action", null).show()
     }
 
     val toggle = ActionBarDrawerToggle(
-        this, drawer_layout, toolbar, R.string.navigation_drawer_open,
+        this, drawer_layout, toolbar,
+        R.string.navigation_drawer_open,
         R.string.navigation_drawer_close)
     drawer_layout.addDrawerListener(toggle)
     toggle.syncState()

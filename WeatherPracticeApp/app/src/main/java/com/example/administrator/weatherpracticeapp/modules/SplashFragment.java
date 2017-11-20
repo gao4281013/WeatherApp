@@ -1,4 +1,4 @@
-package com.example.administrator.weatherpracticeapp;
+package com.example.administrator.weatherpracticeapp.modules;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
+import com.example.administrator.weatherpracticeapp.R;
+import com.example.administrator.weatherpracticeapp.modules.main.MainActivity;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
 /**
@@ -96,6 +98,7 @@ public class SplashFragment extends RxFragment {
 
     @Override
     public void onFinish() {
+
       startActivity(new Intent(getActivity(),MainActivity.class));
     }
 
