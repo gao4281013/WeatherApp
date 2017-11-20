@@ -2,8 +2,10 @@ package com.example.administrator.weatherpracticeapp.modules.main.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import com.example.administrator.weatherpracticeapp.R;
 import com.example.administrator.weatherpracticeapp.base.BaseViewHolder;
 import com.example.administrator.weatherpracticeapp.component.AnimRecycleViewAdapter;
 import com.example.administrator.weatherpracticeapp.modules.main.domain.Weather;
@@ -45,6 +47,20 @@ public class WeatherAdapter  extends AnimRecycleViewAdapter<RecyclerView.ViewHol
 
   @Override
   public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    switch (viewType){
+      case TYPE_ONE:
+      return new NowWeatherViewHolder(LayoutInflater.from(mContext).inflate(R.layout
+          .item_temperature,parent,false));
+      case TYPE_TWO:
+      return new HoursWeatherViewHolder(LayoutInflater.from(mContext).inflate(R.layout
+          .item_hour_info,parent,false));
+      case TYPE_THREE:
+      return new SuggestionViewHolder(LayoutInflater.from(mContext).inflate(R.layout
+          .item_suggestion,parent,false));
+      case TYPE_FOUR:
+      return new ForcastViewHolder(LayoutInflater.from(mContext).inflate(R.layout
+          .item_forcast_info,parent,false));
+    }
     return super.onCreateViewHolder(parent, viewType);
   }
 
@@ -75,6 +91,24 @@ public class WeatherAdapter  extends AnimRecycleViewAdapter<RecyclerView.ViewHol
     @Override
     protected void bind(Weather weather) {
 
+    }
+  }
+
+  private class HoursWeatherViewHolder extends RecyclerView.ViewHolder {
+    public HoursWeatherViewHolder(View inflate) {
+      super(inflate);
+    }
+  }
+
+  private class SuggestionViewHolder extends RecyclerView.ViewHolder {
+    public SuggestionViewHolder(View inflate) {
+      super(inflate);
+    }
+  }
+
+  private class ForcastViewHolder extends RecyclerView.ViewHolder {
+    public ForcastViewHolder(View inflate) {
+      super(inflate);
     }
   }
 }

@@ -2,6 +2,7 @@ package com.example.administrator.weatherpracticeapp;
 
 import android.os.Bundle;
 import com.example.administrator.weatherpracticeapp.event.SplashEvent;
+import com.example.administrator.weatherpracticeapp.modules.SplashFragment;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
