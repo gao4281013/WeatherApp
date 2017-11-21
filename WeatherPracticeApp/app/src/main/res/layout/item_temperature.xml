@@ -25,6 +25,7 @@
         android:layout_height="@dimen/dp80"
         android:layout_marginStart="@dimen/dp8"
         android:layout_marginTop="@dimen/dp8"
+        android:id="@+id/weather_icon"
         tools:src="@mipmap/type_one_sunny"
         />
 

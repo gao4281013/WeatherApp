@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/dp16"
+    android:paddingEnd="@dimen/dp16"
+    android:paddingStart="@dimen/dp32"
+    android:paddingTop="@dimen/dp16"
+    >
+
+  <ImageView
+      android:id="@+id/forecast_icon"
+      android:layout_width="@dimen/dp32"
+      android:layout_height="@dimen/dp32"
+      android:layout_gravity="center_vertical"
+      />
+
+  <RelativeLayout
+      android:layout_marginLeft="@dimen/dp36"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:id="@+id/forecast_date"
+        android:textSize="@dimen/text_size_18"
+        android:text="今日"
+        />
+
+    <TextView
+        android:id="@+id/forecast_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        tools:text="5°  13°"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_size_18"
+        />
+
+    <TextView
+        android:id="@+id/forecast_txt"
+        android:textColor="#969696"
+        android:textSize="@dimen/text_size_10"
+        android:layout_marginTop="@dimen/dp4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        tools:text="81%"
+        />
+  </RelativeLayout>
+</LinearLayout>

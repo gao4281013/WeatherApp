@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="false"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/dp16"
+    android:paddingEnd="@dimen/dp10"
+    android:paddingStart="@dimen/dp16"
+    android:paddingTop="@dimen/dp16"
+    >
+
+  <TextView
+      android:id="@+id/one_clock"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:drawablePadding="@dimen/dp12"
+      tools:text="16:00"
+      android:drawableStart="@drawable/icon_time"
+      />
+
+  <TextView
+      android:id="@+id/one_temp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:drawablePadding="@dimen/dp8"
+      android:drawableStart="@drawable/icon_temp"
+      tools:text="12°"
+      />
+
+  <TextView
+      android:id="@+id/one_humidity"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:drawablePadding="@dimen/dp8"
+      android:drawableStart="@drawable/icon_humidity"
+      tools:text="81%"
+      />
+
+  <TextView
+      android:id="@+id/one_wind"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:drawablePadding="@dimen/dp12"
+      android:drawableStart="@drawable/icon_wind"
+      tools:text="14Km"
+      />
+
+
+
+</LinearLayout>
