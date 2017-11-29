@@ -130,33 +130,33 @@ public class WeatherAdapter extends AnimRecycleViewAdapter<RecyclerView.ViewHold
     @Override
     protected void bind(Weather weather) {
       try {
-        mTempFlu.setText(String.format("%s℃", weather.getNow().getTmp()));
+        mTempFlu.setText(String.format("%s℃", weather.now.getTmp()));
         mTempMax.setText(
-            String.format("↑ %s ℃", weather.getDaily_forecast().get(0).getTmp().getMax()));
+            String.format("↑ %s ℃", weather.daily_forecast.get(0).getTmp().getMax()));
         mTempMin.setText(
-            String.format("↓ %s ℃", weather.getDaily_forecast().get(0).getTmp().getMin()));
+            String.format("↓ %s ℃", weather.daily_forecast.get(0).getTmp().getMin()));
         mTempPm.setText(
-            String.format("PM2.5:%s ug/m³", Util.safeText(weather.getAqi().getCity().getPm25())));
+            String.format("PM2.5:%s ug/m³", Util.safeText(weather.aqi.getCity().getPm25())));
         mTempQuality.setText(
-            String.format("空气质量：%s", Util.safeText(weather.getAqi().getCity().getQlty())));
+            String.format("空气质量：%s", Util.safeText(weather.aqi.getCity().getQlty())));
         ImageLoader.load(itemView.getContext(), SharedPreferenceUtil.getInstance()
-            .getInt(weather.getNow().getCond().getTxt(), R.mipmap.none), mWeatherIcon);
+            .getInt(weather.now.getCond().getTxt(), R.mipmap.none), mWeatherIcon);
       } catch (Exception e) {
         GLog.e(TAG, e.getMessage());
       }
     }
   }
 
-  private class HoursWeatherViewHolder extends RecyclerView.ViewHolder {
+   class HoursWeatherViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.item_hour_info_layout) LinearLayout mItemHourInfoLayout;
-    private TextView[] mClock = new TextView[mWeather.getHourly_forecast().size()];
-    private TextView[] mTemp = new TextView[mWeather.getHourly_forecast().size()];
-    private TextView[] mHumidity = new TextView[mWeather.getHourly_forecast().size()];
-    private TextView[] mWind = new TextView[mWeather.getHourly_forecast().size()];
+    private TextView[] mClock = new TextView[mWeather.hourly_forecast.size()];
+    private TextView[] mTemp = new TextView[mWeather.hourly_forecast.size()];
+    private TextView[] mHumidity = new TextView[mWeather.hourly_forecast.size()];
+    private TextView[] mWind = new TextView[mWeather.hourly_forecast.size()];
 
     public HoursWeatherViewHolder(View inflate) {
       super(inflate);
-      for (int i = 0; i < mWeather.getHourly_forecast().size(); i++) {
+      for (int i = 0; i < mWeather.hourly_forecast.size(); i++) {
         View view = View.inflate(itemView.getContext(), R.layout.item_hour_info_line, null);
         mClock[i] = view.findViewById(R.id.one_clock);
         mTemp[i] = view.findViewById(R.id.one_temp);
@@ -168,12 +168,12 @@ public class WeatherAdapter extends AnimRecycleViewAdapter<RecyclerView.ViewHold
 
     public void bind(Weather weather) {
       try {
-        for (int i = 0; i < mWeather.getHourly_forecast().size(); i++) {
-          String mDate = weather.getHourly_forecast().get(i).getDate();
+        for (int i = 0; i < mWeather.hourly_forecast.size(); i++) {
+          String mDate = weather.hourly_forecast.get(i).getDate();
           mClock[i].setText(mDate.substring(mDate.length() - 5, mDate.length()));
-          mTemp[i].setText(String.format("%s℃", weather.getDaily_forecast().get(i).getTmp()));
-          mHumidity[i].setText(String.format("%s%%", weather.getDaily_forecast().get(i).getHum()));
-          mWind[i].setText(String.format("%sKm/h", weather.getDaily_forecast().get(i).getWind()));
+          mTemp[i].setText(String.format("%s℃", weather.daily_forecast.get(i).getTmp()));
+          mHumidity[i].setText(String.format("%s%%", weather.daily_forecast.get(i).getHum()));
+          mWind[i].setText(String.format("%sKm/h", weather.daily_forecast.get(i).getWind()));
         }
       } catch (Exception e) {
         GLog.e(TAG, e.getMessage());
@@ -184,7 +184,7 @@ public class WeatherAdapter extends AnimRecycleViewAdapter<RecyclerView.ViewHold
   /**
    * 当日建议
    */
-  private class SuggestionViewHolder extends RecyclerView.ViewHolder {
+  class SuggestionViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.cloth_brf) TextView mClothBrf;
     @BindView(R.id.cloth_txt) TextView mClothTxt;
@@ -201,33 +201,33 @@ public class WeatherAdapter extends AnimRecycleViewAdapter<RecyclerView.ViewHold
 
     public void bind(Weather weather) {
       try {
-        mClothBrf.setText(String.format("穿衣指数---%s", weather.getSuggestion().getDrsg().getBrf()));
-        mClothTxt.setText(weather.getSuggestion().getDrsg().getTxt());
+        mClothBrf.setText(String.format("穿衣指数---%s", weather.suggestion.getDrsg().getBrf()));
+        mClothTxt.setText(weather.suggestion.getDrsg().getTxt());
 
-        mSportBrf.setText(String.format("运动指数---%s", weather.getSuggestion().getSport().getBrf()));
-        mSportTxt.setText(weather.getSuggestion().getSport().getTxt());
+        mSportBrf.setText(String.format("运动指数---%s", weather.suggestion.getSport().getBrf()));
+        mSportTxt.setText(weather.suggestion.getSport().getTxt());
 
-        mTraveBrf.setText(String.format("旅游指数---%s", weather.getSuggestion().getTrav().getBrf()));
-        mTravelTxt.setText(weather.getSuggestion().getTrav().getTxt());
+        mTraveBrf.setText(String.format("旅游指数---%s", weather.suggestion.getTrav().getBrf()));
+        mTravelTxt.setText(weather.suggestion.getTrav().getTxt());
 
-        mFaverBrf.setText(String.format("感冒指数---%s", weather.getSuggestion().getFlu().getBrf()));
-        mFaverTxt.setText(weather.getSuggestion().getFlu().getTxt());
+        mFaverBrf.setText(String.format("感冒指数---%s", weather.suggestion.getFlu().getBrf()));
+        mFaverTxt.setText(weather.suggestion.getFlu().getTxt());
       } catch (Exception e) {
         GLog.e(TAG, e.getMessage());
       }
     }
   }
 
-  private class ForcastViewHolder extends RecyclerView.ViewHolder {
+  class ForcastViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.item_forecast_info_layout) LinearLayout mItemForecastLayout;
-    private TextView[] forecastDate = new TextView[mWeather.getHourly_forecast().size()];
-    private TextView[] forecastTemp = new TextView[mWeather.getHourly_forecast().size()];
-    private TextView[] forecastTxt = new TextView[mWeather.getHourly_forecast().size()];
-    private ImageView[] forecastIcon = new ImageView[mWeather.getHourly_forecast().size()];
+    private TextView[] forecastDate = new TextView[mWeather.hourly_forecast.size()];
+    private TextView[] forecastTemp = new TextView[mWeather.hourly_forecast.size()];
+    private TextView[] forecastTxt = new TextView[mWeather.hourly_forecast.size()];
+    private ImageView[] forecastIcon = new ImageView[mWeather.hourly_forecast.size()];
 
     public ForcastViewHolder(View inflate) {
       super(inflate);
-      for (int i = 0; i < mWeather.getHourly_forecast().size(); i++) {
+      for (int i = 0; i < mWeather.hourly_forecast.size(); i++) {
         View view = View.inflate(itemView.getContext(), R.layout.item_forecast_info_line, null);
         forecastDate[i] = view.findViewById(R.id.forecast_date);
         forecastTemp[i] = view.findViewById(R.id.forecast_temp);
@@ -241,29 +241,29 @@ public class WeatherAdapter extends AnimRecycleViewAdapter<RecyclerView.ViewHold
       try {
         forecastDate[0].setText("今日");
         forecastDate[1].setText("明日");
-        for (int i = 0; i < weather.getDaily_forecast().size(); i++) {
+        for (int i = 0; i < weather.daily_forecast.size(); i++) {
           try {
             if (i > 1) {
               forecastDate[i].setText(
-                  TimeUitl.dayForWeek(weather.getDaily_forecast().get(i).getDate()));
+                  TimeUitl.dayForWeek(weather.daily_forecast.get(i).getDate()));
             }
           } catch (Exception e) {
             GLog.e(TAG, e.toString());
           }
           ImageLoader.load(mContext, SharedPreferenceUtil.getInstance()
-                  .getInt(weather.getDaily_forecast().get(i).getCond().getTxt_d(), R.mipmap.none),
+                  .getInt(weather.daily_forecast.get(i).getCond().getTxt_d(), R.mipmap.none),
               forecastIcon[i]);
 
           forecastTemp[i].setText(
-              String.format("%s℃ - %s℃", weather.getDaily_forecast().get(i).getTmp().getMin(),
-                  weather.getDaily_forecast().get(i).getTmp().getMax()));
+              String.format("%s℃ - %s℃", weather.daily_forecast.get(i).getTmp().getMin(),
+                  weather.daily_forecast.get(i).getTmp().getMax()));
 
           forecastTxt[i].setText(String.format("%s。 %s %s %s km/h。降水几率为%s%%",
-              weather.getDaily_forecast().get(i).getCond().getTxt_d(),
-              weather.getDaily_forecast().get(i).getWind().getSc(),
-              weather.getDaily_forecast().get(i).getWind().getDir(),
-              weather.getDaily_forecast().get(i).getWind().getSpd(),
-              weather.getDaily_forecast().get(i).getPop()));
+              weather.daily_forecast.get(i).getCond().getTxt_d(),
+              weather.daily_forecast.get(i).getWind().getSc(),
+              weather.daily_forecast.get(i).getWind().getDir(),
+              weather.daily_forecast.get(i).getWind().getSpd(),
+              weather.daily_forecast.get(i).getPop()));
         }
       } catch (Exception e) {
         GLog.e(TAG, e.getMessage());

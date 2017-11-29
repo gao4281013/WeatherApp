@@ -12,4 +12,5 @@
   <string name="sport_rate">运动指数---</string>
   <string name="travel_rate">旅游指数---</string>
   <string name="faver_rate">感冒指数---</string>
+  <string name="can_not_find_version_name">找不到版本号</string>
 </resources>

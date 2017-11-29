@@ -1,5 +1,6 @@
 package com.example.administrator.weatherpracticeapp.modules.main.domain;
 
+import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
@@ -19,69 +20,21 @@ public class Weather implements Serializable {
    * suggestion : {"air":{"brf":"良","txt":"气象条件有利于空气污染物稀释、扩散和清除，可在室外正常活动。"},"comf":{"brf":"较舒适","txt":"白天天气晴好，早晚会感觉偏凉，午后舒适、宜人。"},"cw":{"brf":"较适宜","txt":"较适宜洗车，未来一天无雨，风力较小，擦洗一新的汽车至少能保持一天。"},"drsg":{"brf":"较冷","txt":"建议着厚外套加毛衣等服装。年老体弱者宜着大衣、呢外套加羊毛衫。"},"flu":{"brf":"较易发","txt":"天凉，昼夜温差较大，较易发生感冒，请适当增减衣服，体质较弱的朋友请注意适当防护。"},"sport":{"brf":"较适宜","txt":"天气较好，但考虑风力较强且气温较低，推荐您进行室内运动，若在户外运动注意防风并适当增减衣物。"},"trav":{"brf":"适宜","txt":"天气较好，温度适宜，但风稍微有点大。这样的天气适宜旅游，您可以尽情地享受大自然的无限风光。"},"uv":{"brf":"最弱","txt":"属弱紫外线辐射天气，无需特别防护。若长期在户外，建议涂擦SPF在8-12之间的防晒护肤品。"}}
    */
 
-  private AqiBean aqi;
-  private BasicBean basic;
-  private NowBean now;
-  private String status;
-  private SuggestionBean suggestion;
-  private List<DailyForecastBean> daily_forecast;
-  private List<HourlyForecastBean> hourly_forecast;
+  @SerializedName("aqi")
+  public AqiBean aqi;
+  @SerializedName("basic")
+  public BasicBean basic;
+  @SerializedName("now")
+  public NowBean now;
+  @SerializedName("status")
+  public String status;
+  @SerializedName("suggestion")
+  public SuggestionBean suggestion;
+  @SerializedName("daily_forecast")
+  public List<DailyForecastBean> daily_forecast;
+  @SerializedName("hourly_forecast")
+  public List<HourlyForecastBean> hourly_forecast;
 
-  public AqiBean getAqi() {
-    return aqi;
-  }
-
-  public void setAqi(AqiBean aqi) {
-    this.aqi = aqi;
-  }
-
-  public BasicBean getBasic() {
-    return basic;
-  }
-
-  public void setBasic(BasicBean basic) {
-    this.basic = basic;
-  }
-
-  public NowBean getNow() {
-    return now;
-  }
-
-  public void setNow(NowBean now) {
-    this.now = now;
-  }
-
-  public String getStatus() {
-    return status;
-  }
-
-  public void setStatus(String status) {
-    this.status = status;
-  }
-
-  public SuggestionBean getSuggestion() {
-    return suggestion;
-  }
-
-  public void setSuggestion(SuggestionBean suggestion) {
-    this.suggestion = suggestion;
-  }
-
-  public List<DailyForecastBean> getDaily_forecast() {
-    return daily_forecast;
-  }
-
-  public void setDaily_forecast(List<DailyForecastBean> daily_forecast) {
-    this.daily_forecast = daily_forecast;
-  }
-
-  public List<HourlyForecastBean> getHourly_forecast() {
-    return hourly_forecast;
-  }
-
-  public void setHourly_forecast(List<HourlyForecastBean> hourly_forecast) {
-    this.hourly_forecast = hourly_forecast;
-  }
 
   public static class AqiBean {
     /**
